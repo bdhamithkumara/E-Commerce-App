@@ -1,10 +1,35 @@
-import React from 'react';
-import { View, TextInput, Button, StyleSheet, Image } from 'react-native';
+import React , {useState} from 'react';
+import { View, TextInput, Button, StyleSheet, Image ,Alert } from 'react-native';
+
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+
+import { initializeApp } from 'firebase/app';
+
+import {firebaseConfig} from '../database/firebase'
 
 const LoginScreen = ({navigation}) => {
+
+    const [email , setEmail] = useState('');
+    const [password, setPassword ] = useState('');
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
   const handleLogin = () => {
-    // Handle login logic here
-    navigation.navigate('Register');
+    if(email === '' && password === '')
+    {
+        Alert.alert('Enter details to login!')
+    }else{
+        signInWithEmailAndPassword(auth,email,password)
+        .then((userz) => {
+            Alert.alert("Successfully veryfied !!!")
+            console.log(userz);
+            navigation.navigate('Product');
+    })
+    .catch(error => {
+        Alert.alert(error)
+    })
+    }
   };
 
   return (
@@ -14,12 +39,16 @@ const LoginScreen = ({navigation}) => {
         style={styles.input}
         placeholder="Usernames"
         autoCapitalize="none"
+        value={email}
+        onChangeText={(val) => setEmail(val)}
       />
       <TextInput
         style={styles.input}
         placeholder="Password"
         secureTextEntry
         autoCapitalize="none"
+        value={password}
+        onChangeText={(val) => setPassword(val)}
       />
       <Button title="Login" onPress={handleLogin} />
     </View>
