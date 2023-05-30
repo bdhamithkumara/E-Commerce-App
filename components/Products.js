@@ -4,6 +4,8 @@ import { Card } from '@rneui/themed';
 
 const Products = ({navigation}) => {
 
+    const handleViewAll = () => {navigation.navigate('Viewall');};
+
     return (
         <View style={styles.container}>
             <FlatList
@@ -35,7 +37,7 @@ const Products = ({navigation}) => {
                 ]}
 
                 renderItem={({ item }) =>
-                    <TouchableOpacity key={item.key} >
+                    <TouchableOpacity key={item.key} onPress={handleViewAll} >
                         <Card containerStyle={{
                             borderColor : `${item.color} 5 solid` ,
                             borderRadius: 20,

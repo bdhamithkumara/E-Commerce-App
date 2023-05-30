@@ -1,5 +1,5 @@
 import React , {useEffect, useState} from 'react'
-import { View, StyleSheet, TextInput , Alert , FlatList} from 'react-native';
+import { View, StyleSheet, TextInput , Alert , FlatList , TouchableOpacity ,Text, Button} from 'react-native';
 import { Card } from '@rneui/themed';
 import { collection, doc, addDoc, updateDoc } from "firebase/firestore";
 import { db } from '../database/firebase'; 
@@ -47,46 +47,110 @@ const Viewall = () => {
   return (
     <View style={styles.container}>
                 <TextInput
-                    style={styles.input}
+                    style={{
+                        marginTop: 40,
+                        padding: 10,
+                        width: 350,
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        borderColor: 'blue',
+                      }}
                     placeholder="Item Name"
                     autoCapitalize="none"
                     value={itemname}
                     onChangeText={(val) => setItemname(val)}
                 />
                 <TextInput
-                    style={styles.input}
+                    style={{
+                        marginTop: 5,
+                        padding: 10,
+                        width: 350,
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        borderColor: 'blue',
+                      }}
                     placeholder="Available Quantity"
                     autoCapitalize="none"
                     value={qty}
                     onChangeText={(val) => setQty(val)}
                 />
                 <TextInput
-                    style={styles.input}
+                    style={{
+                        marginTop: 5,
+                        padding: 10,
+                        width: 350,
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        borderColor: 'blue',
+                      }}
                     placeholder="Unit Price"
                     autoCapitalize="none"
                     value={price}
                     onChangeText={(val) => setPrice(val)}
                 />
 
-                <button onClick={create}>insert</button>
-                <button onClick={update}>update</button>
-                
-                {/* {
-                    dataall.map((item,index) => {
-                        return (
-                            <View key={index}>
-                                <Text>{item.email}</Text>
-                                <Text>{item.username}</Text>
-                            </View>
-                        )
-                    })
-                } */}
+
+
+                <View style={{ flexDirection: 'row', marginTop: 15, marginLeft : 'auto', marginRight: 'auto'  }}>
+        <TouchableOpacity onClick={handleSubmit}
+          style={{
+            backgroundColor: 'blue',
+            padding: 10,
+            width: 150,
+            borderRadius: 30,
+            marginVertical: 2,
+            marginHorizontal:10,
+          }} >
+
             
+            <button  style={{ textAlign: 'center', color : 'white', fontSize: 18 , backgroundColor: 'transparent', borderStyle : 'none',
+            }}> Insert </button>
+
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            backgroundColor: 'blue',
+            padding: 10,
+            width: 150,
+            borderRadius: 30,
+            marginVertical: 2,
+            marginHorizontal:10,
+          }} >
+         <button  style={{ textAlign: 'center', color : 'white', fontSize: 18 , backgroundColor: 'transparent', borderStyle : 'none',
+            }}> Update </button>
+        </TouchableOpacity>
+
+
+        </View>
+
+        <View style={{ flexDirection: 'row', margin: 5, marginLeft : 'auto', marginRight: 'auto' }}>
+          <TouchableOpacity
+          style={{
+            backgroundColor: 'blue',
+            padding: 10,
+            width: 150,
+            borderRadius: 30,
+            marginVertical: 2,
+            marginHorizontal:10,
+          }} >
+         <button  style={{ textAlign: 'center', color : 'white', fontSize: 18 , backgroundColor: 'transparent', borderStyle : 'none',
+            }}> Delete </button>
+        </TouchableOpacity>
+          </View>
+                
+
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+
+      },
    
 })
 

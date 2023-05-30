@@ -22,14 +22,14 @@ const RegisterScreen = ({navigation}) =>  {
     const createAccount = () => {
         if(email === '' && password === '')
         {
-            Alert.alert('Enter details to signup!')
+            alert('Enter details to signup!')
         }else{
             createUserWithEmailAndPassword(auth,email,password,displayname)
             .then((user) => {
-                console.log(
-                  "Registration Successful. Please Login to proceed"
-                );
-                Alert.alert("Registration Successful. Please Login to proceed")
+                // console.log(
+                //   "Registration Successful. Please Login to proceed"
+                // );
+                alert("Registration Successful. Please Login to proceed")
                 console.log(user);
                 navigation.navigate('Login');
             })
@@ -102,11 +102,13 @@ const RegisterScreen = ({navigation}) =>  {
             borderRadius: 40,
             marginTop: 30,
           }}>
-          <Text style={{ textAlign: 'center', coloe: '#FFF', fontSize: 16 }}>
+          {/* <Text style={{ textAlign: 'center', coloe: '#FFF', fontSize: 16 }}>
           <Button title="Signup"
                     onPress={createAccount}
                 />
-          </Text>
+          </Text> */}
+          <button onClick={createAccount} style={{ textAlign: 'center', color : 'white', fontSize: 18 , backgroundColor: 'transparent', borderStyle : 'none',
+            }}> Signup </button>
         </TouchableOpacity>
         
           <View style={{ flexDirection: 'row', marginTop: 60 }}>

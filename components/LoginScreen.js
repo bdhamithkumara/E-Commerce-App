@@ -20,16 +20,16 @@ const LoginScreen = ({navigation}) => {
   const handleLogin = () => {
     if(email === '' && password === '')
     {
-        Alert.alert('Enter details to login!')
+        alert('Enter details to login!')
     }else{
         signInWithEmailAndPassword(auth,email,password)
         .then((userz) => {
-            Alert.alert("Successfully veryfied !!!")
+            alert("Successfully veryfied !!!")
             console.log(userz);
             navigation.navigate('Product');
     })
     .catch(error => {
-        Alert.alert(error)
+        alert(error)
     })
     }
   };
@@ -85,9 +85,15 @@ const LoginScreen = ({navigation}) => {
             borderRadius: 40,
             marginTop: 30,
           }}>
-          <Text style={{ textAlign: 'center', color: '#FFF', fontSize: 16 }}>
+          {/* <Text style={{ textAlign: 'center', color: '#FFF', fontSize: 16 }}>
           <Button title="Login" onPress={handleLogin} />
-          </Text>
+
+          </Text> */}
+
+          <button onClick={handleLogin} style={{ textAlign: 'center', color : 'white', fontSize: 18 , backgroundColor: 'transparent', borderStyle : 'none',
+            }}> <Text>Login</Text> </button>
+
+
         </TouchableOpacity>
         <Text style={{ marginTop:20, }}>
             Forget Pasword ?

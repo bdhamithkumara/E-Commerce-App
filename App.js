@@ -15,14 +15,14 @@ export default function App() {
   return (
     <NavigationContainer>
             <Stack.Navigator screenOptions={{headerShown:false,headerBackTitle:''}}>
-      
+           
       <Stack.Screen  name="SplashScreen" component={SplashScreen} />
      <Stack.Screen  name="WelcomeScreen" component={WelcomeScreen} />
      <Stack.Screen  name="Register" component={RegisterScreen} />
      <Stack.Screen name="Login"  component={LoginScreen} />
      <Stack.Screen name="Product"  component={Products} />
-      <Stack.Screen name="Viewall"  component={Viewall} />
 
+     <Stack.Screen name="Viewall"  component={Viewall} />
 
       </Stack.Navigator>
     </NavigationContainer>
